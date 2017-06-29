@@ -1,0 +1,39 @@
+<!-- 
+{{ }} (string manupulation)
+[] = " "  (property binding)
+() = " "  (event binding)
+ -->
+<label>Server Name</label>
+<!-- event binding -->
+<!-- <input 
+  type="text"
+  class="form-control"
+  (input) = "onUpdateServerName($event)"> -->
+
+  <!-- two way data binding  model<->view        -->
+  <input 
+  type="text"
+  class="form-control"
+  [(ngModel)]="serverName">
+ <p></p>
+ <!-- <p>{{ serverName }}</p> -->
+<button 
+  class="btn btn-success"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer($event)">Add Server</button>
+
+<p></p>
+<!-- ngif built in directive -->
+<p *ngIf="serverCreated else noServer">Server is created and server name is <b>{{ serverName }}</b></p>
+<ng-template #noServer>
+  <p>No server is created</p>
+</ng-template>
+
+<!-- string manupulation -->
+<!-- <p>{{ serverCreationStatus }}</p> -->
+
+  <!-- Propert Binding -->
+<!--   <p [innerText] = "serverCreationStatus"></p> -->
+
+
+<app-server *ngFor="let i of servers"></app-server>
